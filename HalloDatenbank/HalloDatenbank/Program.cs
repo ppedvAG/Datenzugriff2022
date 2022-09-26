@@ -10,8 +10,7 @@ namespace HalloDatenbank
 
             string conString = "Server=(localdb)\\mssqllocaldb;Database=NORTHWND;Trusted_Connection=true;TrustServerCertificate=true;";
 
-            SqlConnection con = new SqlConnection(conString);
-
+            using SqlConnection con = new SqlConnection(conString);
             try
             {
                 con.Open();
@@ -26,13 +25,9 @@ namespace HalloDatenbank
                 SqlCommand queryCmd = new SqlCommand();
                 queryCmd.Connection = con;
                 queryCmd.CommandText = "SELECT * FROM Employees";
-                SqlDataReader reader = queryCmd.ExecuteReader();
-                while(reader.Read())
+                using SqlDataReader reader = queryCmd.ExecuteReader();
+                while (reader.Read())
                 {
-                    //string vorName = reader.GetString(2);
-                    //string nachName = (string)reader["LastName"];
-                    //int id = reader.GetInt32(0);
-
                     string nachName = reader.GetString(reader.GetOrdinal("LastName"));
                     string vorName = reader.GetString(reader.GetOrdinal("FirstName"));
                     int id = reader.GetInt32(reader.GetOrdinal("EmployeeId"));
@@ -40,8 +35,6 @@ namespace HalloDatenbank
 
                     Console.WriteLine($"[{id}] {vorName} {nachName} ({gebDatum:d})");
                 }
-                reader.Close();
-                con.Close();
             }
             catch (SqlException ex)
             {
@@ -51,7 +44,6 @@ namespace HalloDatenbank
             {
                 Console.WriteLine($"ERROR: {ex.Message}");
             }
-
         }
     }
 }
