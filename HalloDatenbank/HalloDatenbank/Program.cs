@@ -22,9 +22,14 @@ namespace HalloDatenbank
                 var count = cmd.ExecuteScalar();
                 Console.WriteLine($"Es wurde {count} Employees gefunden");
 
+                Console.WriteLine("Suche:");
+                string suche = Console.ReadLine();
+
                 SqlCommand queryCmd = new SqlCommand();
                 queryCmd.Connection = con;
-                queryCmd.CommandText = "SELECT * FROM Employees";
+                queryCmd.CommandText = "SELECT * FROM Employees WHERE LastName LIKE @search + '%'";
+                queryCmd.Parameters.AddWithValue("@search", suche);
+
                 using SqlDataReader reader = queryCmd.ExecuteReader();
                 while (reader.Read())
                 {
