@@ -22,18 +22,32 @@ namespace HalloDbTransaction
         {
             using var con = new SqlConnection(conString);
             con.Open();
-            foreach (var emp in employees)
+            var trans = con.BeginTransaction();
+            try
             {
-                using var cmd = con.CreateCommand();
-                cmd.CommandText = "UPDATE Employees SET BirthDate=@bdate WHERE EmployeeId=@id";
-                cmd.Parameters.AddWithValue("@id", emp.Id);
-                cmd.Parameters.AddWithValue("@bdate", emp.BirthDate);
-                var rowCount = cmd.ExecuteNonQuery();
-                if (rowCount == 0) Console.WriteLine($"{emp.LastName} wurde nicht verjüngt!");
-                if (rowCount == 1) Console.WriteLine($"{emp.LastName} wurde verjüngt!");
-                if (rowCount > 1) Console.WriteLine($"{emp.LastName} PANIK!");
-            }
+                foreach (var emp in employees)
+                {
+                    using var cmd = con.CreateCommand();
+                    cmd.Transaction = trans;
+                    cmd.CommandText = "UPDATE Employees SET BirthDate=@bdate WHERE EmployeeId=@id";
+                    cmd.Parameters.AddWithValue("@id", emp.Id);
+                    cmd.Parameters.AddWithValue("@bdate", emp.BirthDate);
+                    var rowCount = cmd.ExecuteNonQuery();
+                    if (rowCount == 0) Console.WriteLine($"{emp.LastName} wurde nicht verjüngt!");
+                    if (rowCount == 1) Console.WriteLine($"{emp.LastName} wurde verjüngt!");
+                    if (rowCount > 1) Console.WriteLine($"{emp.LastName} PANIK!");
 
+                    //if (emp.Id > 4)
+                    //    throw new OutOfMemoryException();
+                }
+                trans.Commit();
+                Console.WriteLine("Alle wurden verjüngt");
+            }
+            catch (Exception ex)
+            {
+                trans.Rollback();
+                Console.WriteLine($"ERROR {ex.Message} -> KEINER wurde verjüngt");
+            }
         }
 
         private static void MakeAllYounger(IEnumerable<Employee> employees)
