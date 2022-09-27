@@ -18,6 +18,12 @@ namespace BuchSuche
             BooksResults result = JsonSerializer.Deserialize<BooksResults>(json);
 
             dataGridView1.DataSource = result.items.Select(x => x.volumeInfo).ToList();
+
+            var sumPrice = result.items.Select(x => x.saleInfo)
+                                       .Where(x => x.retailPrice != null)
+                                       .Sum(x => x.retailPrice.amount);
+            
+            MessageBox.Show($"Preis {sumPrice:c}");
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -33,6 +39,13 @@ namespace BuchSuche
             var json = File.ReadAllText("book.json");
             var result = JsonSerializer.Deserialize<IEnumerable<Volumeinfo>>(json);
             dataGridView1.DataSource = result;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var data = (IEnumerable<Volumeinfo>)dataGridView1.DataSource;
+            var pageCount = data.Sum(x => x.pageCount);
+            MessageBox.Show($"{pageCount} Seiten insgesamt");
         }
     }
 }

@@ -36,6 +36,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button4 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -101,6 +102,7 @@
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.Maroon;
             this.flowLayoutPanel1.Controls.Add(this.button2);
             this.flowLayoutPanel1.Controls.Add(this.button3);
+            this.flowLayoutPanel1.Controls.Add(this.button4);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(81, 51);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -142,6 +144,18 @@
             this.dataGridView1.Size = new System.Drawing.Size(990, 502);
             this.dataGridView1.TabIndex = 1;
             // 
+            // button4
+            // 
+            this.button4.AutoSize = true;
+            this.button4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.button4.Location = new System.Drawing.Point(263, 3);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(140, 42);
+            this.button4.TabIndex = 2;
+            this.button4.Text = "Sum Pages";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
@@ -171,5 +185,6 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private Button button2;
         private Button button3;
+        private Button button4;
     }
 }
