@@ -19,5 +19,20 @@ namespace BuchSuche
 
             dataGridView1.DataSource = result.items.Select(x => x.volumeInfo).ToList();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var data = (IEnumerable<Volumeinfo>)dataGridView1.DataSource;
+            var json = JsonSerializer.Serialize(data);
+            File.WriteAllText("book.json", json);
+            MessageBox.Show("Speichern erfolgreich");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var json = File.ReadAllText("book.json");
+            var result = JsonSerializer.Deserialize<IEnumerable<Volumeinfo>>(json);
+            dataGridView1.DataSource = result;
+        }
     }
 }
