@@ -31,6 +31,8 @@ namespace HalloLinq
                         where emp.BirthDate.Year >= 1984 && emp.Name.StartsWith("F")
                         orderby emp.BirthDate.Month, emp.BirthDate.Day descending
                         select emp;
+            //select new { Name = emp.Name, Test = "123", Jahr = emp.BirthDate.Year };
+
 
             dataGridView1.DataSource = query.ToList();
         }
@@ -40,6 +42,7 @@ namespace HalloLinq
             dataGridView1.DataSource = Employees.Where(emp => emp.BirthDate.Year >= 1984 && emp.Name.StartsWith("F"))
                                                 .OrderBy(x => x.BirthDate.Month)
                                                 .ThenByDescending(x => x.BirthDate.Day)
+                                                //.Select(x => new { Name = x.Name, Test = "123", Jahr = x.BirthDate.Year })
                                                 .ToList();
         }
 
