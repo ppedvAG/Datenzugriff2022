@@ -1,6 +1,6 @@
 ﻿namespace BuchSuche
 {
-    public class BooksResult
+    public class BooksResults
     {
         public string kind { get; set; }
         public int totalItems { get; set; }
@@ -139,7 +139,5 @@
     {
         public string textSnippet { get; set; }
     }
-
-
 
 }
