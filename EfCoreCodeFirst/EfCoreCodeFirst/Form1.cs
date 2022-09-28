@@ -1,5 +1,6 @@
 using EfCoreCodeFirst.Data;
 using EfCoreCodeFirst.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace EfCoreCodeFirst
 {
@@ -16,7 +17,12 @@ namespace EfCoreCodeFirst
 
         private void ladenButton_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = _context.Mitarbeiter.ToList();
+            var query = _context.Mitarbeiter.Where(x => x.GebDatum.Month < 13 /*&& x.Name.EndsWith("7")*/)
+                                            .OrderBy(x => x.Abteilungen.Sum(y => y.Bezeichnung.Length));
+
+            dataGridView1.DataSource = query.ToList();
+
+            //MessageBox.Show(query.ToQueryString());
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -40,6 +46,15 @@ namespace EfCoreCodeFirst
                 _context.Mitarbeiter.Add(m);
             }
             _context.SaveChanges();
+        }
+
+        private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (dataGridView1.CurrentRow.DataBoundItem is Mitarbeiter m)
+            {
+                var abts = _context.Abteilungen.Where(x => x.Mitarbeiter.Contains(m));
+                MessageBox.Show($"{m.Name} {string.Join(", ", abts.Select(x => x.Bezeichnung))}");
+            }
         }
     }
 }
