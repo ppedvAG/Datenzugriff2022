@@ -20,17 +20,21 @@ namespace EfCoreCodeFirst
         private void DataGridView1_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.Value is IEnumerable<Abteilung> abts)
-                e.Value = string.Join(",", abts.Select(x => x.Bezeichnung));
+                e.Value = string.Join(", ", abts.Select(x => x.Bezeichnung));
         }
 
         private void ladenButton_Click(object sender, EventArgs e)
         {
-            var query = _context.Mitarbeiter.Include(x => x.Abteilungen)
+            _context = new EfContext();
+
+            var query = _context.Mitarbeiter//.Include(x => x.Abteilungen).Include(x => x.Kunden)
                                             .Where(x => x.GebDatum.Month < 13)
                                             .OrderBy(x => x.Abteilungen.Sum(y => y.Bezeichnung.Length));
 
             dataGridView1.DataSource = query.ToList();
 
+            dataGridView1.Columns.RemoveAt(1);
+            dataGridView1.Columns.RemoveAt(1);
             //MessageBox.Show(query.ToQueryString());
         }
 

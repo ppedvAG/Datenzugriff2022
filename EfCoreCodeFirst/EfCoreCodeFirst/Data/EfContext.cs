@@ -14,7 +14,9 @@ namespace EfCoreCodeFirst.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlServer("Server=.;Database=EfCoreCodeFirst;Trusted_Connection=true;TrustServerCertificate=true");
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=EfCoreCodeFirst;Trusted_Connection=true;TrustServerCertificate=true");
+
+            optionsBuilder.UseLazyLoadingProxies()
+                          .UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=EfCoreCodeFirst;Trusted_Connection=true;TrustServerCertificate=true");
 
             optionsBuilder.LogTo(msg => Debug.WriteLine(msg));
 
