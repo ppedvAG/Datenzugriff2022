@@ -28,6 +28,7 @@ namespace EfCoreCodeFirst
             _context = new EfContext();
 
             var query = _context.Mitarbeiter//.Include(x => x.Abteilungen).Include(x => x.Kunden)
+                                            //.AsNoTracking()
                                             .Where(x => x.GebDatum.Month < 13)
                                             .OrderBy(x => x.Abteilungen.Sum(y => y.Bezeichnung.Length));
 
@@ -69,7 +70,9 @@ namespace EfCoreCodeFirst
                 var expTxt = $"Explizit: {string.Join(", ", abts.Select(x => x.Bezeichnung))}";
                 var direktTxt = $"Direkt: {string.Join(", ", m.Abteilungen.Select(x => x.Bezeichnung))}";
 
-                MessageBox.Show($"{m.Name} \n {expTxt} \n {direktTxt}");
+                _context.ChangeTracker.Entries().FirstOrDefault(x => x.Entity == m).State = EntityState.Modified;
+                var state = _context.ChangeTracker.Entries().FirstOrDefault(x => x.Entity == m).State;
+                MessageBox.Show($"{m.Name} \n {expTxt} \n {direktTxt} \n Status: {state}");
             }
         }
 
