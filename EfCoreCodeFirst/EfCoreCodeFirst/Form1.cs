@@ -13,11 +13,20 @@ namespace EfCoreCodeFirst
             InitializeComponent();
 
             _context.Database.EnsureCreated();
+
+            dataGridView1.CellFormatting += DataGridView1_CellFormatting;
+        }
+
+        private void DataGridView1_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value is IEnumerable<Abteilung> abts)
+                e.Value = string.Join(",", abts.Select(x => x.Bezeichnung));
         }
 
         private void ladenButton_Click(object sender, EventArgs e)
         {
-            var query = _context.Mitarbeiter.Where(x => x.GebDatum.Month < 13 /*&& x.Name.EndsWith("7")*/)
+            var query = _context.Mitarbeiter.Include(x => x.Abteilungen)
+                                            .Where(x => x.GebDatum.Month < 13)
                                             .OrderBy(x => x.Abteilungen.Sum(y => y.Bezeichnung.Length));
 
             dataGridView1.DataSource = query.ToList();
@@ -53,7 +62,10 @@ namespace EfCoreCodeFirst
             if (dataGridView1.CurrentRow.DataBoundItem is Mitarbeiter m)
             {
                 var abts = _context.Abteilungen.Where(x => x.Mitarbeiter.Contains(m));
-                MessageBox.Show($"{m.Name} {string.Join(", ", abts.Select(x => x.Bezeichnung))}");
+                var expTxt = $"Explizit: {string.Join(", ", abts.Select(x => x.Bezeichnung))}";
+                var direktTxt = $"Direkt: {string.Join(", ", m.Abteilungen.Select(x => x.Bezeichnung))}";
+
+                MessageBox.Show($"{m.Name} \n {expTxt} \n {direktTxt}");
             }
         }
     }
