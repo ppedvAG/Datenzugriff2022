@@ -72,5 +72,24 @@ namespace EfCoreCodeFirst
                 MessageBox.Show($"{m.Name} \n {expTxt} \n {direktTxt}");
             }
         }
+
+        private void deletebutton_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow.DataBoundItem is Mitarbeiter m)
+            {
+                var msg = $"Soll der Mitarbeiter {m.Name} wirklich gelöscht werden?";
+                if (MessageBox.Show(msg, "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    _context.Mitarbeiter.Remove(m);
+                    //_context.SaveChanges();
+                }
+            }
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            int affRows = _context.SaveChanges();
+            MessageBox.Show($"{affRows} Zeilen wurden geändert");
+        }
     }
 }
