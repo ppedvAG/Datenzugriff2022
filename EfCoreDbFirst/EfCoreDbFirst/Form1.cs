@@ -15,7 +15,8 @@ namespace EfCoreDbFirst
 
         private void button1_Click(object sender, System.EventArgs e)
         {
-            dataGridView1.DataSource = _context.Customers.ToList();
+            //dataGridView1.DataSource = _context.Customers.ToList();
+            dataGridView1.DataSource = _context.ProductSalesFor1997s.ToList();
         }
     }
 }
