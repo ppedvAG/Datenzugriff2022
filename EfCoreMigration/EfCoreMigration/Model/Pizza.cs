@@ -7,5 +7,6 @@
         public decimal Preis { get; set; }
         public int KCal { get; set; }
         public bool Vegetarisch { get; set; }
+        public bool Vegan { get; set; }
     }
 }
