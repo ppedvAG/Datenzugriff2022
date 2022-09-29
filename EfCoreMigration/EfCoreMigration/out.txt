@@ -1,0 +1,13 @@
+﻿BEGIN TRANSACTION;
+GO
+
+ALTER TABLE [Pizza] ADD [KCal] int NOT NULL DEFAULT 0;
+GO
+
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20220929094729_Kcal', N'6.0.9');
+GO
+
+COMMIT;
+GO
+

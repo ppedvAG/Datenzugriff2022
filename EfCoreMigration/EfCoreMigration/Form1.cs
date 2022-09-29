@@ -1,5 +1,6 @@
 using EfCoreMigration.Data;
 using EfCoreMigration.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace EfCoreMigration
 {
@@ -8,6 +9,7 @@ namespace EfCoreMigration
         public Form1()
         {
             InitializeComponent();
+            _context.Database.Migrate();
         }
 
         PizzaContext _context = new PizzaContext();
