@@ -141,6 +141,10 @@ namespace EfCoreDbFirst.Data
 
                 entity.Property(e => e.Country).HasMaxLength(15);
 
+                entity.Property(e => e.Email)
+                    .HasMaxLength(150)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Fax).HasMaxLength(24);
 
                 entity.Property(e => e.Phone).HasMaxLength(24);
