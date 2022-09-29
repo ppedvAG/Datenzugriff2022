@@ -45,6 +45,9 @@ namespace EfCoreMigration.Migrations
                     b.Property<bool>("Vegetarisch")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("Weizen")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.ToTable("Pizza");

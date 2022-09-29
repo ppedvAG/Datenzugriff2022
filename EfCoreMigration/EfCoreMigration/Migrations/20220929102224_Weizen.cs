@@ -4,12 +4,12 @@
 
 namespace EfCoreMigration.Migrations
 {
-    public partial class Vegan : Migration
+    public partial class Weizen : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<bool>(
-                name: "Vegan",
+                name: "Weizen",
                 table: "Pizza",
                 type: "bit",
                 nullable: false,
@@ -19,7 +19,7 @@ namespace EfCoreMigration.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Vegan",
+                name: "Weizen",
                 table: "Pizza");
         }
     }

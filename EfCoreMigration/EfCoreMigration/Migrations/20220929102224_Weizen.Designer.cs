@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EfCoreMigration.Migrations
 {
     [DbContext(typeof(PizzaContext))]
-    [Migration("20220929094729_Kcal")]
-    partial class Kcal
+    [Migration("20220929102224_Weizen")]
+    partial class Weizen
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,6 +40,15 @@ namespace EfCoreMigration.Migrations
 
                     b.Property<decimal>("Preis")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<bool>("Vegan")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Vegetarisch")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Weizen")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 

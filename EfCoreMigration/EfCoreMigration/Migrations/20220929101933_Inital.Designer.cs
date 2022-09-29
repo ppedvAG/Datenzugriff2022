@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EfCoreMigration.Migrations
 {
     [DbContext(typeof(PizzaContext))]
-    [Migration("20220929092431_Inital")]
+    [Migration("20220929101933_Inital")]
     partial class Inital
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,12 +31,21 @@ namespace EfCoreMigration.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int>("KCal")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Preis")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<bool>("Vegan")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Vegetarisch")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 

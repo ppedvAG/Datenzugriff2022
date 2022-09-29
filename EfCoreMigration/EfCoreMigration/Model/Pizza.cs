@@ -8,5 +8,6 @@
         public int KCal { get; set; }
         public bool Vegetarisch { get; set; }
         public bool Vegan { get; set; }
+        public bool Weizen { get; set; }
     }
 }
