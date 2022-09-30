@@ -7,7 +7,7 @@ namespace ppedv.MegaShop5000.Logic.ProduktService.Tests
         [Fact]
         public void CalculateBestellung_Bestellung_results_14()
         {
-            var pm = new ProduktManager();
+            var pm = new ProduktManager(null);
             var p1 = new Produkt() { Name = "P1" };
             var p2 = new Produkt() { Name = "P2" };
             var best = new Bestellung();
