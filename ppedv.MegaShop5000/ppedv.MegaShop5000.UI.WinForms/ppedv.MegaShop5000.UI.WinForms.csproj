@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bogus" Version="34.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ppedv.MegaShop5000.Data.EfCore\ppedv.MegaShop5000.Data.EfCore.csproj" />
+    <ProjectReference Include="..\ppedv.MegaShop5000.Logic.ProduktService\ppedv.MegaShop5000.Logic.ProduktService.csproj" />
+    <ProjectReference Include="..\ppedv.MegaShop5000.Model\ppedv.MegaShop5000.Model.csproj" />
+  </ItemGroup>
+
+</Project>
