@@ -1,10 +1,23 @@
 ﻿using ppedv.MegaShop5000.Model;
-using System.Security.Cryptography.X509Certificates;
+using ppedv.MegaShop5000.Model.Contracts;
 
 namespace ppedv.MegaShop5000.Logic.ProduktService
 {
     public class ProduktManager
     {
+        public IRepository Repository { get; }
+
+        public ProduktManager(IRepository repository)
+        {
+            Repository = repository;
+        }
+
+        public Produkt GetMostSoldProdukt()
+        {
+            return Repository.GetAll<Produkt>().OrderBy(x => x.Positionen.Sum(y => y.Menge)).FirstOrDefault();
+        }
+
+
         public decimal CalculateBestellung(Bestellung bestellung, PreisListe preisListe)
         {
             if (bestellung == null) throw new ArgumentNullException("bestellung");
