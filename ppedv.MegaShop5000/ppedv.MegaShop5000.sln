@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.MegaShop5000.UI.TestC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.MegaShop5000.UI.WinForms", "ppedv.MegaShop5000.UI.WinForms\ppedv.MegaShop5000.UI.WinForms.csproj", "{C9237259-402D-48C6-ADBD-02A1F329B06E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.MegaShop5000.UI.Web", "ppedv.MegaShop5000.UI.Web\ppedv.MegaShop5000.UI.Web.csproj", "{1DFCC156-4B7A-405B-9199-B1BBEEA4F9DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{C9237259-402D-48C6-ADBD-02A1F329B06E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9237259-402D-48C6-ADBD-02A1F329B06E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9237259-402D-48C6-ADBD-02A1F329B06E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DFCC156-4B7A-405B-9199-B1BBEEA4F9DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DFCC156-4B7A-405B-9199-B1BBEEA4F9DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DFCC156-4B7A-405B-9199-B1BBEEA4F9DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DFCC156-4B7A-405B-9199-B1BBEEA4F9DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
