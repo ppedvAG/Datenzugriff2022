@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.32916.344
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.MegaShop5000.Model", "ppedv.MegaShop5000.Model\ppedv.MegaShop5000.Model.csproj", "{5FBBFC04-0B21-47AF-A0CF-1BB8E6E4D073}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ppedv.MegaShop5000.Model", "ppedv.MegaShop5000.Model\ppedv.MegaShop5000.Model.csproj", "{5FBBFC04-0B21-47AF-A0CF-1BB8E6E4D073}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ppedv.MegaShop5000.Data.EfCore", "ppedv.MegaShop5000.Data.EfCore\ppedv.MegaShop5000.Data.EfCore.csproj", "{E468B78D-A2EA-4F6A-BA14-CD53B721E302}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{5FBBFC04-0B21-47AF-A0CF-1BB8E6E4D073}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FBBFC04-0B21-47AF-A0CF-1BB8E6E4D073}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FBBFC04-0B21-47AF-A0CF-1BB8E6E4D073}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E468B78D-A2EA-4F6A-BA14-CD53B721E302}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E468B78D-A2EA-4F6A-BA14-CD53B721E302}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E468B78D-A2EA-4F6A-BA14-CD53B721E302}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E468B78D-A2EA-4F6A-BA14-CD53B721E302}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
