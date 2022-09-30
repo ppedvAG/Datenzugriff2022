@@ -14,7 +14,7 @@ namespace ppedv.MegaShop5000.Logic.ProduktService
 
         public Produkt GetMostSoldProdukt()
         {
-            return Repository.GetAll<Produkt>().OrderBy(x => x.Positionen.Sum(y => y.Menge)).FirstOrDefault();
+            return Repository.Query<Produkt>().OrderBy(x => x.Positionen.Sum(y => y.Menge)).FirstOrDefault();
         }
 
 

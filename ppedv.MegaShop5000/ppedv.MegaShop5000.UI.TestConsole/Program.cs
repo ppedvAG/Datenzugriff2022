@@ -13,7 +13,7 @@ namespace ppedv.MegaShop5000.UI.TestConsole
             IRepository repo = new Data.EfCore.EfRepository();
             ProduktManager pm = new ProduktManager(repo);
 
-            foreach (var pro in repo.GetAll<Produkt>())
+            foreach (var pro in repo.Query<Produkt>().Where(x => x.Gewicht >= 0).OrderBy(x => x.Name))
             {
                 Console.WriteLine($"{pro.Name} {pro.Gewicht}Kg - {pro.Beschreibung}");
             }
