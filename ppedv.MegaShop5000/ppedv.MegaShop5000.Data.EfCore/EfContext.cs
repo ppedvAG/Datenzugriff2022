@@ -30,7 +30,9 @@ namespace ppedv.MegaShop5000.Data.EfCore
             //modelBuilder.Entity<Bestellung>().HasOne(x => x.RechnungsAdresse).WithMany(x => x.BestellungRechnung);
             modelBuilder.Entity<Kunde>().HasMany(x => x.BestellungLieferung).WithOne(x => x.Lieferadresse);
             modelBuilder.Entity<Kunde>().HasMany(x => x.BestellungRechnung).WithOne(x => x.RechnungsAdresse);
-        }
 
+            modelBuilder.Entity<PreisListe>().HasMany(x=>x.Preise).WithOne(x=>x.PreisListe)
+                        .OnDelete(DeleteBehavior.Cascade);
+        }
     }
 }
