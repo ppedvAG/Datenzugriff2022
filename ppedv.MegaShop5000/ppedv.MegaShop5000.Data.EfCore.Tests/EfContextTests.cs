@@ -137,7 +137,6 @@ namespace ppedv.MegaShop5000.Data.EfCore.Tests
                 Assert.Null(con.Preise.Find(preis1.Id));
                 Assert.Null(con.Preise.Find(preis2.Id));
             }
-
         }
     }
 }
