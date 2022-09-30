@@ -1,6 +1,7 @@
 using Bogus;
 using ppedv.MegaShop5000.Model;
 using ppedv.MegaShop5000.Model.Contracts;
+using System.ComponentModel;
 
 namespace ppedv.MegaShop5000.UI.WinForms
 {
@@ -9,13 +10,20 @@ namespace ppedv.MegaShop5000.UI.WinForms
         public Form1()
         {
             InitializeComponent();
+            dataGridView1.DataSource = liste;
         }
 
         IRepository repo = new Data.EfCore.EfRepository();
 
+        BindingList<Produkt> liste = new BindingList<Produkt>();
+
         private void LadenButton_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = repo.Query<Produkt>().ToList();
+            liste.Clear();
+            foreach (var item in repo.Query<Produkt>())
+            {
+                liste.Add(item);
+            }
         }
 
         private void SapeichernButton_Click(object sender, EventArgs e)
@@ -33,8 +41,8 @@ namespace ppedv.MegaShop5000.UI.WinForms
             foreach (var prod in faker.Generate(100))
             {
                 repo.Add(prod);
+                liste.Add(prod);
             }
-            repo.SaveAll();
         }
     }
 }
